@@ -22,7 +22,4 @@ LIBS += -L"C:\Users\PICHAU\source\repos\ConsoleApplication1\packages\Allegro.5.2
 LIBS += -lallegro -lallegro_font -lallegro_ttf -lallegro_dialog -lallegro_primitives -lallegro_audio \
         -lallegro_acodec -lallegro_color -lallegro_image -lallegro_main -lallegro_memfile -lallegro_video\
         -lallegro_monolith-static -lallegro_physfs
-#LIBS += -L"C:\Users\PICHAU\source\repos\ConsoleApplication1\packages\Allegro.5.2.6\build\native\v142\x64\bin\allegro-5.2.dll"
 
-DISTFILES += \
-    player.png

@@ -21,7 +21,7 @@
 
 using namespace std;
 
-#define GAMEPATH "C:/Users/PICHAU/Documents/QtProjects/GameTestAllegro/"
+#define GAMEPATH "C:/Users/PICHAU/Desktop/Faculdade de Ciencias da computação/GIT_Project/Allegro_5/Allegro_5/Audio/loadMusic/"
 
 enum dimension{
     WIDTH = 1280,
@@ -53,9 +53,9 @@ int main()
     ALLEGRO_SAMPLE *soundEffect = al_load_sample(audioPath.str().c_str());
 
 //    std::stringstream audioPath;
-    audioPath.clear();
-    audioPath << GAMEPATH << "audio/music.mp3";
-    ALLEGRO_SAMPLE *song = al_load_sample(audioPath.str().c_str());
+    std::stringstream musicPath;
+    musicPath << GAMEPATH << "audio/music.mp3";
+    ALLEGRO_SAMPLE *song = al_load_sample(musicPath.str().c_str());
 
     ALLEGRO_SAMPLE_INSTANCE *songInstance = al_create_sample_instance(song);
     al_set_sample_instance_playing(songInstance, ALLEGRO_PLAYMODE_LOOP);
