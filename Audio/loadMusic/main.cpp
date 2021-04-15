@@ -45,12 +45,21 @@ int main()
     al_init_image_addon();
     al_init_acodec_addon();
 
+    al_reserve_samples(2);
+
     //only works 8/16 bit wav sounds
     std::stringstream audioPath;
     audioPath << GAMEPATH << "audio/sound.wav";
     ALLEGRO_SAMPLE *soundEffect = al_load_sample(audioPath.str().c_str());
 
-    al_reserve_samples(1);
+//    std::stringstream audioPath;
+    audioPath.clear();
+    audioPath << GAMEPATH << "audio/music.mp3";
+    ALLEGRO_SAMPLE *song = al_load_sample(audioPath.str().c_str());
+
+    ALLEGRO_SAMPLE_INSTANCE *songInstance = al_create_sample_instance(song);
+    al_set_sample_instance_playing(songInstance, ALLEGRO_PLAYMODE_LOOP);
+    al_attach_sample_instance_to_mixer(songInstance, al_get_default_mixer());
 
     std::stringstream path;
     path << GAMEPATH << "player.png";
@@ -67,6 +76,8 @@ int main()
     al_register_event_source(event_queue, al_get_timer_event_source(timer));
     al_register_event_source(event_queue, al_get_display_event_source(display));
     al_register_event_source(event_queue, al_get_mouse_event_source());
+
+    al_play_sample_instance(songInstance);
 
     al_start_timer(timer);
 
@@ -133,7 +144,10 @@ int main()
     al_destroy_timer(timer);
     al_destroy_bitmap(image);
     al_destroy_sample(soundEffect);
+    al_destroy_sample(song);
+    al_destroy_sample_instance(songInstance);
     al_destroy_event_queue(event_queue);
+
 
     return 0;
 }
